@@ -51,12 +51,24 @@ input[type="submit"]:hover {
     margin-top: 20px;
 }
 footer {
-        background-color: #333;
-        color: #fff;
-        text-align: center;
-        padding: 10px;
-    }
+    background-color: #333; /* Change the background color to your preference */
+    color: #fff; /* Change the text color to your preference */
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
 
-    footer p {
-        margin: 0;
-    }
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: #fff; /* Change the link color to your preference */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
