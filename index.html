@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicle Information Form</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>VST VLTD SALE REPORT</h1>
+    <form id="submit-form" method="post" action="">
+    
+        <label for="imei">IMEI:</label>
+        <input type="number" id="imei" name="IMEI"><br><br>
+
+        <label for="dealerName">Dealer Name:</label>
+        <input type="text" id="dealerName" name="Dealer_Name"><br><br>
+
+        <label for="dealerNumber">Dealer Number:</label>
+        <input type="number" id="dealerNumber" name="Dealer_Number"><br><br>
+
+        <label for="vehicle">Vehicle:</label>
+        <input type="text" id="vehicle" name="Vehicle" value="KL"><br><br>
+
+        <label for="owner">Owner:</label>
+        <input type="text" id="owner" name="Owner"><br><br>
+
+        <label for="ownerNumber">Owner Number:</label>
+        <input type="number" id="ownerNumber" name="Owner_Number"><br><br>
+
+        <label for="saleDate">Sale Date:</label>
+        <input type="date" id="saleDate" name="Sale_Date"><br><br>
+
+        <label for="installDate">Installed Date:</label>
+        <input type="date" id="installDate" name="Installed_Date"><br><br>
+
+        <label for="invoice">Invoice:</label>
+        <input type="number" id="invoice" name="Invoice_Number"><br><br>
+
+        <label for="saleAmount">Sale Amount:</label>
+        <input type="number" id="saleAmount" name="Sale_Amount"><br><br>
+
+        <label for="amountStatus">Amount Status:</label>
+        <select id="amountStatus" name="Amount_Status">
+            <option value="Pending">Pending</option>
+            <option value="Received">Received</option>
+        </select><br><br>
+
+        <label for="paymentMode">Payment Mode:</label>
+        <select id="paymentMode" name="Payment_Mode">
+            <option value="Cash">Cash</option>
+            <option value="Cheque">Cheque</option>
+            <option value="Online Transaction">Online Transaction</option>
+        </select><br><br>
+
+        <input type="button" value="Preview" onclick="openPreview()">
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function openPreview() {
+            // Get the values from the form fields
+            var vehicle = document.getElementById("vehicle").value;
+            var imei = document.getElementById("imei").value;
+            var owner = document.getElementById("owner").value;
+            var ownerNumber = document.getElementById("ownerNumber").value;
+            var dealerName = document.getElementById("dealerName").value;
+            var dealerNumber = document.getElementById("dealerNumber").value;
+            var saleDate = document.getElementById("saleDate").value;
+            var installDate = document.getElementById("installDate").value;
+            var invoice = document.getElementById("invoice").value;
+            var saleAmount = document.getElementById("saleAmount").value;
+            var amountStatus = document.getElementById("amountStatus").value;
+            var paymentMode = document.getElementById("paymentMode").value;
+
+            // Create a preview content string
+            var previewContent = `
+                <h2>Preview</h2>
+                <p><strong>Vehicle:</strong> ${vehicle}</p>
+                <p><strong>IMEI:</strong> ${imei}</p>
+                <p><strong>Owner:</strong> ${owner}</p>
+                <p><strong>Owner Number:</strong> ${ownerNumber}</p>
+                <p><strong>Dealer Name:</strong> ${dealerName}</p>
+                <p><strong>Dealer Number:</strong> ${dealerNumber}</p>
+                <p><strong>Sale Date:</strong> ${saleDate}</p>
+                <p><strong>Installed Date:</strong> ${installDate}</p>
+                <p><strong>Invoice:</strong> ${invoice}</p>
+                <p><strong>Sale Amount:</strong> ${saleAmount}</p>
+                <p><strong>Amount Status:</strong> ${amountStatus}</p>
+                <p><strong>Payment Mode:</strong> ${paymentMode}</p>
+            `;
+
+             // Create a new window for the preview
+             var previewWindow = window.open('', 'Preview', 'width=600,height=400');
+            previewWindow.document.open();
+            previewWindow.document.write(previewContent);
+            previewWindow.document.close();
+        }
+    </script>
+    <script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbzdClc4P-kAcWsFAQwIO1uFCUvn6lbCJfFwa01aP-OGyezvbMMsHpm6_HP73SbnxmvJ/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
+</body>
+</html>
