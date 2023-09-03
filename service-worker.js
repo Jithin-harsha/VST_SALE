@@ -5,7 +5,7 @@ self.addEventListener('install', event => {
           '/',
           '/index.html',
           '/icon.png',
-          'https://sheetdb.io/s/f/vvnuioo63q9nw.js'
+          'https://vstvltdsale.vercel.app'
         ]);
       })
     );
