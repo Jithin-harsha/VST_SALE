@@ -8,7 +8,7 @@
   "scope": "/",
   "short_name": "VASTSALE",
   "start_url": "/",
-  "theme_color": "#ffffff",
+  "theme_color": "#4f46e5",
   "categories": [
     "entertainment",
     "finance"
@@ -25,7 +25,24 @@
       "type": "image/png"
     }
   ],
-  "icons": [],
+ "icons": [
+      {
+        "src": "icon192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any"
+     },
+      {
+        "src": "icon192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "icon512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
   "shortcuts": [
     {
       "name": "vST",
