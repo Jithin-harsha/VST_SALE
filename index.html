@@ -146,5 +146,55 @@
           });
         }
       </script>
+
+    <!-- JavaScript for setting and getting cookies -->
+    <script>
+        // Function to set a cookie with a name and value
+        function setCookie(name, value) {
+            document.cookie = name + "=" + value + "; path=/";
+        }
+
+        // Function to get the value of a cookie by name
+        function getCookie(name) {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.indexOf(name + "=") === 0) {
+                    return cookie.substring(name.length + 1);
+                }
+            }
+            return null;
+        }
+
+        // Function to populate input fields with cookie values on page load
+        function populateInputFieldsFromCookies() {
+            var inputFields = [
+                'imei',
+                'dealerName',
+                'dealerNumber',
+                'vehicle',
+                'owner',
+                'ownerNumber',
+                'saleDate',
+                'installDate',
+                'invoice',
+                'saleAmount',
+                'amountStatus',
+                'paymentMode',
+                'agentName'
+            ];
+
+            for (var i = 0; i < inputFields.length; i++) {
+                var fieldName = inputFields[i];
+                var cookieValue = getCookie(fieldName);
+                if (cookieValue !== null) {
+                    document.getElementById(fieldName).value = cookieValue;
+                }
+            }
+        }
+
+        // Call the function to populate input fields from cookies on page load
+        window.onload = populateInputFieldsFromCookies;
+    </script>
 </body>
 </html>
